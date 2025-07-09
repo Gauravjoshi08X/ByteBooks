@@ -515,3 +515,15 @@
                 display: none;
             }
         }
+        #detailControls {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        #detailControls .btn {
+            font-size: 1.1rem;
+            padding: 0.7rem 1.5rem;
+            cursor: pointer;
+        }
+        

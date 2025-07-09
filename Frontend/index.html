@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Book World</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <!-- Header -->
@@ -12,7 +12,7 @@
         <div class="logo">Book World</div>
         <nav class="nav">
             <a href="#" onclick="showPage('home')" class="nav-link active">Home</a>
-            <a href="#" onclick="showPage('store')" class="nav-link">Store</a>
+            <a href="#" onclick="showPage('search-results')" class="nav-link">Store</a>
             <a href="#" onclick="showPage('community')" class="nav-link">Community</a>
             <a href="#" onclick="showPage('about')" class="nav-link">About Us</a>
         </nav>
@@ -26,16 +26,14 @@
     <div id="home" class="page active">
         <div class="home-container">
             <div class="hero-content">
-                <div class="star-badge">
-                    ⭐ Start your reading journey today
-                </div>
+                <div class="star-badge">⭐ Start your reading journey today</div>
                 <h1 class="hero-title">Where every page is a new Adventure</h1>
                 <p class="hero-description">
                     From classics to contemporary, our bookstore offers a wide selection of books to suit every taste and interest. Start exploring our shelves today and uncover your next literary gem.
                 </p>
                 <div class="search-container">
                     <div class="search-icon">🔍</div>
-                    <input type="text" class="search-input" placeholder="Search Books..." id="searchInput">
+                    <input type="text" class="search-input" placeholder="Search Books..." id="searchInput" />
                 </div>
             </div>
             <div class="hero-image">
@@ -76,15 +74,11 @@
                     <p class="book-description" id="detailDescription">Book description goes here...</p>
                 </div>
             </div>
-            <div class="book-content">
-                <h3 class="chapter-title">Chapter 1: The Beginning</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                
-                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                
-                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
+            <div class="book-content" id="bookDescriptionContainer">
+                <!-- Dynamic book description will appear here -->
+            </div>
+            <div id="detailControls" style="margin-top: 15px;">
+                <!-- Read, Download, Back buttons inserted dynamically -->
             </div>
         </div>
     </div>
