@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Book World</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">Book World</div>
+        <nav class="nav">
+            <a href="#" onclick="showPage('home')" class="nav-link active">Home</a>
+            <a href="#" onclick="showPage('search-results')" class="nav-link">Store</a>
+            <a href="#" onclick="showPage('favorites')" class="nav-link">Favorites</a>
+            <a href="#" onclick="showPage('about')" class="nav-link">About Us</a>
+        </nav>
+        <div class="auth-buttons" id="authButtons">
+            <a href="#" onclick="showPage('signin')" class="btn btn-secondary">Sign in</a>
+            <a href="#" onclick="showPage('signup')" class="btn btn-primary">Sign Up</a>
+        </div>
+        <div class="user-info" id="userInfo">
+            <span class="user-name" id="userName">Welcome, User!</span>
+            <button class="btn btn-danger" onclick="logout()">Logout</button>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <div class="home-container">
+            <div class="hero-content">
+                <div class="star-badge">⭐ Start your reading journey today</div>
+                <h1 class="hero-title">Where every page is a new Adventure</h1>
+                <p class="hero-description">
+                    From classics to contemporary, our bookstore offers a wide selection of books to suit every taste and interest. Start exploring our shelves today and uncover your next literary gem.
+                </p>
+                <div class="search-container">
+                    <div class="search-icon">🔍</div>
+                    <input type="text" class="search-input" placeholder="Search Books..." id="searchInput" />
+                    <div class="search-options">
+                        <label class="search-toggle active" id="googleToggle">
+                            <input type="radio" name="searchType" value="google" checked style="display: none;">
+                            📚 Google Books
+                        </label>
+                        <label class="search-toggle" id="archiveToggle">
+                            <input type="radio" name="searchType" value="archive" style="display: none;">
+                            🏛️ Internet Archive
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="book-stack">
+                    <div class="book"></div>
+                    <div class="book"></div>
+                    <div class="book"></div>
+                    <div class="book"></div>
+                    <div class="book"></div>
+                    <div class="book"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sign In Page -->
+    <div id="signin" class="page">
+        <div class="auth-container">
+            <form class="auth-form" id="signinForm">
+                <h2>Sign In</h2>
+                <div class="error-message" id="signinError"></div>
+                <div class="success-message" id="signinSuccess"></div>
+                <div class="form-group">
+                    <label for="signinEmail">Email</label>
+                    <input type="email" id="signinEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signinPassword">Password</label>
+                    <input type="password" id="signinPassword" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Sign In</button>
+                <div class="auth-links">
+                    <p>Don't have an account? <a href="#" onclick="showPage('signup')">Sign Up</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Sign Up Page -->
+    <div id="signup" class="page">
+        <div class="auth-container">
+            <form class="auth-form" id="signupForm">
+                <h2>Sign Up</h2>
+                <div class="error-message" id="signupError"></div>
+                <div class="success-message" id="signupSuccess"></div>
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" name="password" required minlength="6">
+                </div>
+                <div class="form-group">
+                    <label for="signupConfirmPassword">Confirm Password</label>
+                    <input type="password" id="signupConfirmPassword" name="confirmPassword" required minlength="6">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Sign Up</button>
+                <div class="auth-links">
+                    <p>Already have an account? <a href="#" onclick="showPage('signin')">Sign In</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Search Results Page -->
+    <div id="search-results" class="page">
+        <div class="search-results">
+            <div class="results-header">
+                <h2 class="results-title">Search Results</h2>
+                <p class="results-count" id="resultsCount">Found 0 books</p>
+            </div>
+            <div class="books-grid" id="booksGrid">
+                <!-- Books will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Favorites Page -->
+    <div id="favorites" class="page">
+        <div class="favorites-container">
+            <div class="favorites-hero">
+                <h1 class="hero-title">Your Favorite Books</h1>
+                <p class="hero-description">Books you've starred and want to read</p>
+            </div>
+            <div class="books-grid" id="favoritesGrid">
+                <div class="empty-favorites">
+                    <h3>No favorites yet!</h3>
+                    <p>Start exploring and star books you love to see them here.</p>
+                    <button class="btn btn-primary" onclick="showPage('home')" style="margin-top: 1rem;">Discover Books</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Book Detail Page -->
+    <div id="book-detail" class="page">
+        <div class="book-detail">
+            <div class="book-detail-container">
+                <div class="book-detail-cover" id="detailCover">📖</div>
+                <div class="book-detail-info">
+                    <h1 class="book-detail-title" id="detailTitle">Book Title</h1>
+                    <p class="book-detail-author" id="detailAuthor">Author Name</p>
+                    <span class="book-detail-genre" id="detailGenre">Genre</span>
+                    <p class="book-description" id="detailDescription">Book description goes here...</p>
+                </div>
+            </div>
+            <div class="book-content" id="bookDescriptionContainer">
+                <!-- Dynamic book description will appear here -->
+            </div>
+            <div id="detailControls">
+                <!-- Read, Download, Back buttons inserted dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- About Page -->
+    <div id="about" class="page">
+        <div class="about-container">
+            <div class="about-hero">
+                <h1 class="hero-title">About Book World</h1>
+                <p class="hero-description">Your gateway to endless literary adventures</p>
+            </div>
+            <div class="about-content">
+                <h2>Our Mission</h2>
+                <p>At Book World, we believe that every book holds the power to transport you to new worlds, introduce you to fascinating characters, and expand your horizons. Our mission is to connect readers with the books they'll love, whether they're timeless classics or contemporary bestsellers.</p>
+                
+                <h2>What We Offer</h2>
+                <p>We provide access to millions of books through our partnerships with Google Books and Internet Archive. From popular fiction to academic texts, from children's stories to professional guides - we have something for every reader.</p>
+                
+                <h2>Our Vision</h2>
+                <p>More than just a search engine, Book World is a community of passionate readers. Join us to discover new books, share recommendations, and connect with fellow book lovers around the world.</p>
+            </div>
+            <div class="team-section">
+                <h2 style="text-align: center; color: #2c3e50; margin-bottom: 2rem;">Our Team</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <h3>Gaurav Joshi</h3>
+                        <p>Frontend Developer</p>
+                    </div>
+                    <div class="team-member">
+                        <h3>Pratiphal Chapagain</h3>
+                        <p>Backend Developer</p>
+                    </div>
+                    <div class="team-member">
+                        <h3>Aakristha Pachhai</h3>
+                        <p>Backend Developer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js">
+       
+    </script>
+</body>
+</html>
