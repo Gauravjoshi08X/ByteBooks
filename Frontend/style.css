@@ -83,6 +83,22 @@
         .auth-buttons {
             display: flex;
             gap: 1rem;
+            align-items: center;
+        }
+
+        .user-info {
+            display: none;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-info.active {
+            display: flex;
+        }
+
+        .user-name {
+            color: #2c3e50;
+            font-weight: 600;
         }
 
         .btn {
@@ -94,6 +110,7 @@
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
+            font-size: 1rem;
         }
 
         .btn-primary {
@@ -115,6 +132,110 @@
         .btn-secondary:hover {
             background: #2c3e50;
             color: white;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #3498db;
+            border: 2px solid #3498db;
+        }
+
+        .btn-outline:hover {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn-danger {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c0392b;
+        }
+
+        /* Auth Forms */
+        .auth-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 100px);
+            padding: 2rem;
+        }
+
+        .auth-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .auth-form h2 {
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
+        }
+
+        .auth-links {
+            margin-top: 1.5rem;
+        }
+
+        .auth-links a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .auth-links a:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            background: #e74c3c;
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .success-message {
+            background: #27ae60;
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            display: none;
         }
 
         /* Home Page */
@@ -175,7 +296,7 @@
 
         .search-input {
             width: 100%;
-            padding: 1rem 1.5rem 1rem 3rem;
+            padding: 1rem 1.5rem 1rem 4rem;
             border: 2px solid #e0e0e0;
             border-radius: 30px;
             font-size: 1.1rem;
@@ -192,11 +313,37 @@
 
         .search-icon {
             position: absolute;
-            left: 1rem;
+            left: 1.5rem;
             top: 50%;
-            transform: translateY(-50%);
+            transform: translateY(-170%);
             color: #bdc3c7;
             font-size: 1.2rem;
+            pointer-events: none;
+        }
+
+        .search-options {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .search-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-toggle.active {
+            border-color: #3498db;
+            background: #3498db;
+            color: white;
         }
 
         .hero-image {
@@ -318,11 +465,39 @@
             transition: all 0.3s ease;
             cursor: pointer;
             transform: translateY(0);
+            position: relative;
         }
 
         .book-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .favorite-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .favorite-btn:hover {
+            background: white;
+            transform: scale(1.1);
+        }
+
+        .favorite-btn.active {
+            color: #f39c12;
         }
 
         .book-cover {
@@ -335,19 +510,14 @@
             color: white;
             position: relative;
             overflow: hidden;
+            background-size: cover;
+            background-position: center;
         }
 
-        .book-cover::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.1) 75%), 
-                        linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.1) 75%);
-            background-size: 20px 20px;
-            background-position: 0 0, 10px 10px;
+        .book-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .book-info {
@@ -377,6 +547,42 @@
             margin-top: 0.5rem;
         }
 
+        .book-buttons {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .book-buttons .btn {
+            flex: 1;
+            text-align: center;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+        }
+
+        /* Favorites Page */
+        .favorites-container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .favorites-hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .empty-favorites {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #7f8c8d;
+        }
+
+        .empty-favorites h3 {
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
         /* Book Detail Page */
         .book-detail {
             max-width: 1000px;
@@ -403,6 +609,15 @@
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
             position: relative;
             overflow: hidden;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .book-detail-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
         }
 
         .book-detail-info {
@@ -451,12 +666,84 @@
             color: #2c3e50;
         }
 
-        .chapter-title {
-            font-size: 2rem;
-            margin-bottom: 2rem;
+        #detailControls {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        #detailControls .btn {
+            font-size: 1.1rem;
+            padding: 0.7rem 1.5rem;
+            cursor: pointer;
+        }
+
+        /* About Page */
+        .about-container {
+            padding: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .about-hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .about-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            line-height: 1.8;
+            margin-bottom: 3rem;
+        }
+
+        .about-content h2 {
             color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+        }
+
+        .about-content h2:first-child {
+            margin-top: 0;
+        }
+
+        .team-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-member h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-member p {
+            color: #7f8c8d;
+            font-weight: 600;
         }
 
         /* Animations */
@@ -514,16 +801,17 @@
             .nav {
                 display: none;
             }
+
+            .search-options {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            #detailControls {
+                flex-direction: column;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
         }
-        #detailControls {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        
-        #detailControls .btn {
-            font-size: 1.1rem;
-            padding: 0.7rem 1.5rem;
-            cursor: pointer;
-        }
-        
