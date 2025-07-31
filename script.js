@@ -11,6 +11,9 @@
             loadFavorites();
         });
 
+        function homePage(){
+            window.location = 'index.html'
+        }
         // Authentication functions
         function checkAuthStatus() {
             const user = JSON.parse(localStorage.getItem('currentUser') || 'null');

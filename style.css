@@ -4,6 +4,9 @@
             box-sizing: border-box;
         }
 
+        .logo:hover{
+            cursor: pointer;
+        }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #f5f1eb 0%, #e8ddd4 100%);
